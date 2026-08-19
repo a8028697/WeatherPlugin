@@ -1,16 +1,34 @@
-name: WeatherPlugin
-label:
-  en_US: Weather Plugin
-  zh_Hans: 天气插件
-description:
-  en_US: Query Taiwan CWA 36-hour weather forecast by keyword.
-  zh_Hans: 输入关键词查询台湾中央气象署 36 小时天气预报。
-version: 0.1.0
-author: you
-
-main: main.py
-
-components:
-  EventListener:
-    fromDirs:
-      - path: components/event_listener/
+apiVersion: v1
+kind: Plugin
+metadata:
+  author: yourname
+  name: WeatherPlugin
+  repository: 'https://github.com/yourname/WeatherPlugin'
+  version: 0.1.0
+  description:
+    en_US: 'Query Taiwan CWA 36-hour weather forecast by keyword.'
+    zh_Hans: '输入关键词查询台湾中央气象署 36 小时天气预报。'
+  label:
+    en_US: WeatherPlugin
+    zh_Hans: 天气插件
+  icon: assets/icon.svg
+spec:
+  config:
+    - name: cwa_api_key
+      type: string
+      label:
+        en_US: CWA Authorization Key
+        zh_Hans: 气象署授权码
+      description:
+        en_US: Apply for a free key at https://opendata.cwa.gov.tw
+        zh_Hans: 在 https://opendata.cwa.gov.tw 申请的免费授权码
+      default: ''
+      required: true
+  components:
+    EventListener:
+      fromDirs:
+        - path: components/event_listener/
+execution:
+  python:
+    path: main.py
+    attr: WeatherPlugin
