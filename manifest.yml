@@ -1,0 +1,16 @@
+name: WeatherPlugin
+label:
+  en_US: Weather Plugin
+  zh_Hans: 天气插件
+description:
+  en_US: Query Taiwan CWA 36-hour weather forecast by keyword.
+  zh_Hans: 输入关键词查询台湾中央气象署 36 小时天气预报。
+version: 0.1.0
+author: you
+
+main: main.py
+
+components:
+  EventListener:
+    fromDirs:
+      - path: components/event_listener/
